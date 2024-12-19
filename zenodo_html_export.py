@@ -20,15 +20,15 @@ def fetch_publications():
 
 def generate_html(publications):
 
-    table_1 = "<table class='avia-table avia-data-table avia_pricing_default  avia-builder-el-8  avia-builder-el-no-sibling'><thead>"
-    table_2_de = """<tr class='avia-heading-row'>
+    table_1 = "<table><thead>"
+    table_2_de = """<tr>
                     <th>Datum</th>
                     <th>Titel</th>
                     <th>Autor(en)</th>
                     <th>Veranstaltung / Herausgeber</th>
                     <th>Verlinkungen</th>
                     </tr></thead><tbody>"""
-    table_2_en = """<tr class='avia-heading-row'>
+    table_2_en = """<tr>
                     <th>Date</th>
                     <th>Title</th>
                     <th>Author(s)</th>
