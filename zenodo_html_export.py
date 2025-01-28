@@ -36,7 +36,7 @@ def generate_html(publications):
                     <th>Links</th>
                     </tr></thead><tbody>"""
     
-    table_3 = ""
+    pub_list = []
 
     for pub in publications:
         doi = pub['doi']
@@ -78,13 +78,19 @@ def generate_html(publications):
         else:
             publisher = ""
 
-        table_3 += f"""<tr>
+        pub_list.append((publication_date, f"""<tr>
                         <td>{publication_date}</td>
                         <td>{title}</td>
                         <td>{creators}</td>
                         <td>{publisher}</td>
                         <td><p><a href=\"{doi_url}\" target=\"_blank\" rel=\"noopener\">{doi}</a></p><p><a href=\"{zenodo_url}\" target=\"_blank\" rel=\"noopener\">Zenodo</a></p></td>
-                   </tr>"""
+                   </tr>"""))
+
+    pub_list.sort(key=lambda x: x[0], reverse=True)
+
+    table_3 = ""
+    for i in range(len(pub_list)):
+        table_3 += pub_list[i][1]
 
     table_4 = "</tbody></table>"
 
