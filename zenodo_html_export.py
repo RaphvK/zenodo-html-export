@@ -20,6 +20,8 @@ def fetch_publications():
 
 def generate_html(publications):
 
+    table_0_de = f"<h3>{len(publications)} Veröffentlichungen</h3>"
+    table_0_en = f"<h3>{len(publications)} Publications</h3>"
     table_1 = "<table class='avia-table avia-data-table avia_pricing_default  avia-builder-el-8  avia-builder-el-no-sibling'><thead>"
     table_2_de = """<tr class='avia-heading-row'>
                     <th>Datum</th>
@@ -98,17 +100,17 @@ def generate_html(publications):
     html_doc_de.body.append(html_doc_de.new_tag('h1'))
     html_doc_de.body.h1.string = "Veröffentlichungen"
     item_tag_de = html_doc_de.new_tag('div')
-    item_tag_de.append(BeautifulSoup(table_1 + table_2_de + table_3 + table_4, 'html.parser'))
+    item_tag_de.append(BeautifulSoup(table_0_de + table_1 + table_2_de + table_3 + table_4, 'html.parser'))
     html_doc_de.body.append(item_tag_de)
 
     html_doc_en = BeautifulSoup("<html><head><title>Publications</title></head><body></body></html>", 'html.parser')    
     html_doc_en.body.append(html_doc_de.new_tag('h1'))
     html_doc_en.body.h1.string = "Publications"
     item_tag_en = html_doc_en.new_tag('div')
-    item_tag_en.append(BeautifulSoup(table_1 + table_2_en + table_3 + table_4, 'html.parser'))
+    item_tag_en.append(BeautifulSoup(table_0_en + table_1 + table_2_en + table_3 + table_4, 'html.parser'))
     html_doc_en.body.append(item_tag_en)
 
-    return str(item_tag_de.table), str(item_tag_en.table)
+    return str(item_tag_de.h3) + str(item_tag_de.table), str(item_tag_en.h3) + str(item_tag_en.table)
 
 def main():
     publications = fetch_publications()
